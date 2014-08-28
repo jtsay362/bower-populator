@@ -34,8 +34,12 @@ DOWNLOAD_FILENAME = "#{DOWNLOAD_DIR}/bower_components.json"
       },
       "properties" : {
         "name" : {
-          "type" : "string",
-          "index" : "not_analyzed"
+          "type" : "multi_field",
+          "path" : "just_name",
+          "fields" : {
+             "rawName" : { "type" : "string", "index" : "not_analyzed" },
+             "name" : { "type" : "string", "index" : "analyzed" }
+          }
         },
         "description" : {
           "type" : "string",
